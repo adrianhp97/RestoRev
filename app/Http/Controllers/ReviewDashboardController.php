@@ -26,4 +26,9 @@ class ReviewDashboardController extends Controller
         return view('dashboard.review_specific')
             ->with('restaurant', $restaurant);
     }
+
+    public function destroy(Request $request)
+    {
+        return ReviewController::destroy($request->input('review_id'));       
+    }
 }

@@ -17,17 +17,11 @@
 |--------------------------------------------------------------------------
 */
 
-Route::get('/admin', function () {
-    return view('dashboard.dashboard');
-})->name('dashboard');
+Route::get('/admin', 'DashboardController@index')->name('dashboard');
 
-Route::get('/admin/restaurant', function () {
-    return view('dashboard.list_restaurant');
-})->name('dashboard-restaurant');
+Route::get('/admin/restaurant', 'RestaurantDashboardController@index')->name('dashboard-restaurant');
 
-Route::get('/admin/restaurant/top', function () {
-    return view('dashboard.top_restaurant');
-})->name('dashboard-top-restaurant');
+Route::get('/admin/restaurant/top', 'TopRestaurantDashboardController@index')->name('dashboard-top-restaurant');
 
 Route::get('/admin/restaurant/review', 'ReviewDashboardController@index')->name('dashboard-review');
 
@@ -37,9 +31,7 @@ Route::get('/admin/restaurant/voucher', 'VoucherDashboardController@index')->nam
 
 Route::get('/admin/restaurant/voucher/{restaurant_id}', 'VoucherDashboardController@getRestaurantById')->name('dashboard-voucher-spec');
 
-Route::get('/admin/member', function () {
-    return view('dashboard.list_member');
-})->name('dashboard-member');
+Route::get('/admin/member', 'UserDashboardController@index')->name('dashboard-member');
 
 Route::get('/admin/member/voucher/', 'UserGetVoucherDashboardController@index')->name('dashboard-member-voucher');
 
@@ -73,6 +65,8 @@ Route::get('/getListMember', 'UserDashboardController@getListMember');
 
 Route::get('/getListRestaurant', 'RestaurantDashboardController@getListRestaurant');
 
+Route::get('/getListTopRestaurant', 'TopRestaurantDashboardController@getListTopRestaurant');
+
 Route::get('/getListVoucher/{restaurant_id}', 'VoucherDashboardController@getAllVoucherByRestaurant');
 
 Route::get('/getListReview/{restaurant_id}', 'ReviewDashboardController@getAllReviewByRestaurant');
@@ -88,11 +82,13 @@ Route::post('/insertMember', 'MemberController@store');
 
 Route::post('/insertRestaurant', 'RestaurantDashboardController@store');
 
-Route::post('/insertVoucher/{restaurant_id}', 'VoucherDashboardController@store');
+Route::post('/insertTopRestaurant', 'TopRestaurantDashboardController@store');
 
-Route::post('/insertReview/{restaurant_id}', 'ReviewController@store');
+Route::post('/insertVoucher', 'VoucherDashboardController@store');
 
-Route::post('/insertMemberVoucher/{restaurant_id}', 'PromoController@store');
+Route::post('/insertReview', 'ReviewController@store');
+
+Route::post('/insertMemberVoucher', 'PromoController@store');
 
 /*
 |--------------------------------------------------------------------------
@@ -103,23 +99,27 @@ Route::post('/deleteMember', 'UserDashboardController@destroy');
 
 Route::post('/deleteRestaurant', 'RestaurantDashboardController@destroy');
 
-Route::post('/deleteVoucher/{restaurant_id}', 'VoucherDashboardController@destroy');
+Route::post('/deleteTopRestaurant', 'TopRestaurantDashboardController@destroy');
 
-Route::post('/deleteReview/{restaurant_id}', 'ReviewDashboardController@destroy');
+Route::post('/deleteVoucher', 'VoucherDashboardController@destroy');
 
-Route::post('/deleteMemberVoucher/{restaurant_id}', 'UserGetVoucherDashboardController@destroy');
+Route::post('/deleteReview', 'ReviewDashboardController@destroy');
+
+Route::post('/deleteMemberVoucher', 'UserGetVoucherDashboardController@destroy');
 
 /*
 |--------------------------------------------------------------------------
-| Delete Data Route
+| update Data Route
 |--------------------------------------------------------------------------
 */
 Route::post('/updateMember', 'UserDashboardController@update');
 
 Route::post('/updateRestaurant', 'RestaurantDashboardController@update');
 
-Route::post('/updateVoucher/{restaurant_id}', 'VoucherDashboardController@update');
+Route::post('/updateTopRestaurant', 'TopRestaurantDashboardController@update');
 
-Route::post('/updateReview/{restaurant_id}', 'ReviewDashboardController@update');
+Route::post('/updateVoucher', 'VoucherDashboardController@update');
 
-Route::post('/updateMemberVoucher/{restaurant_id}', 'UserGetVoucherDashboardController@update');
+Route::post('/updateReview', 'ReviewDashboardController@update');
+
+Route::post('/updateMemberVoucher', 'UserGetVoucherDashboardController@update');

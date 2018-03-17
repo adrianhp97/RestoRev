@@ -9,35 +9,11 @@ use DB;
 
 class GetPromotionController extends Controller
 {
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        return GetPromotion::create($request);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\GetPromotion  $getPromotion
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\GetPromotion  $getPromotion
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($user_id, $restaurant_id)
     {
         $whereArray = array('user_id' => $user_id, 'restaurant_id' => $restaurant_id);
@@ -46,6 +22,16 @@ class GetPromotionController extends Controller
             $query->where($field, $value);
         }
         return $query->delete();
+    }
+    
+    public static function destroyByUser($user_id)
+    {
+        return DB::table('get_promotion')->where('user_id', '=', $user_id)->delete();
+    }
+
+    public static function destroyByRestaurant($restaurant_id)
+    {
+        return DB::table('get_promotion')->where('restaurant_id', '=', $restaurant_id)->delete();
     }
 
     public static function getAllUserByRestaurant($restaurant_id)

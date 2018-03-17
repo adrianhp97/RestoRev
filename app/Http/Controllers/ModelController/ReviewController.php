@@ -8,38 +8,19 @@ use App\Http\Controllers\Controller;
 
 class ReviewController extends Controller
 {
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public static function store(Request $request)
     {
-        //
+        return Review::Create($request->all());
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Review $review)
+    public static function destroy($review_id)
     {
-        //
+        return DB::table('review')->where('review_id', '=', $review_id)->delete();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($review_id)
+    public static function destroyByRestaurant($restaurant_id)
     {
-        DB::table('review')->where('review_id', '=', $review_id)->delete();
+        return DB::table('review')->where('restaurant_id', '=', $restaurant_id)->delete();
     }
 
     public static function getAllReview() {

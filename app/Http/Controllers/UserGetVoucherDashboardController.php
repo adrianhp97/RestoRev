@@ -26,4 +26,9 @@ class UserGetVoucherDashboardController extends Controller
         return view('dashboard.member_voucher_specific')
             ->with('restaurant', $restaurant);
     }
+
+    public function destroy(Request $request, $restaurant_id)
+    {
+        return GetPromotionController::destroy($user_id, $restaurant_id);
+    }
 }

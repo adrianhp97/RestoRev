@@ -15,6 +15,16 @@ class VoucherDashboardController extends Controller
             ->with('listRestaurant', $listRestaurant);
     }
 
+    public function store(Request $request)
+    {
+        return VoucherController::store($request);
+    }
+
+    public function destroy(Request $request)
+    {
+        return VoucherController::destroy($request->input('code'));       
+    }
+
     public function getAllVoucherByRestaurant($restaurant_id)
     {
         return VoucherController::getAllVoucherByRestaurant($restaurant_id);
