@@ -51,25 +51,17 @@ Route::get('/admin/member/voucher/{restaurant}', 'UserGetVoucherDashboardControl
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () {
-    return view('client.index');
-})->name('client-index');
+Route::get('/', 'HomeController@index')->name('client-index');
 
 Route::get('/about', function () {
     return view('client.about');
 })->name('client-about');
 
-Route::get('/member', function () {
-    return view('client.member');
-})->name('client-member');
+Route::get('/member', 'MemberController@index')->name('client-member');
 
-Route::get('/partnership', function () {
-    return view('client.partnership');
-})->name('client-partnership');
+Route::get('/partnership', 'PartnershipController@index')->name('client-partnership');
 
-Route::get('/promo', function () {
-    return view('client.promo');
-})->name('client-promo');
+Route::get('/promo', 'PromoController@index')->name('client-promo');
 
 
 
