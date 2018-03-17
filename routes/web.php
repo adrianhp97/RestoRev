@@ -51,8 +51,26 @@ Route::get('/admin/member/voucher/{restaurant}', function () {
     return view('dashboard.member_voucher');
 });
 
-Route::get('/home', function () {
-    return view('welcome');
-})->name('home');
+
+Route::get('/', function () {
+    return view('client.index');
+})->name('client-index');
+
+Route::get('/about', function () {
+    return view('client.about');
+})->name('client-about');
+
+Route::get('/member', function () {
+    return view('client.member');
+})->name('client-member');
+
+Route::get('/partnership', function () {
+    return view('client.partnership');
+})->name('client-partnership');
+
+Route::get('/promo', function () {
+    return view('client.promo');
+})->name('client-promo');
+
 
 

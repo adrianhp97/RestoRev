@@ -28,6 +28,6 @@
   </ul>
 
   <ul class="list-unstyled CTAs">
-    <li><a href="{{URL::route('home')}}" class="client-page">Go to Client Page</a></li>
+    <li><a href="{{URL::route('client-index')}}" class="client-page">Go to Client Page</a></li>
   </ul>
 </nav>
