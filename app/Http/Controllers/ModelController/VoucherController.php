@@ -41,4 +41,15 @@ class VoucherController extends Controller
     {
         //
     }
+
+    public static function getAllVoucher() 
+    {
+        $voucher = Voucher::All();
+        return $voucher->toArray();
+    }
+
+    public static function getAllVoucherByRestaurant($restaurant_id) 
+    {
+        return Voucher::All()->where('restaurant_id', $restaurant_id)->toJson();
+    }
 }

@@ -9,7 +9,7 @@ class Review extends Migration
     public function up()
     {
         Schema::create('review', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('review_id');
             $table->integer('restaurant_id')->unsigned();
             $table->string('name');
             $table->string('email');

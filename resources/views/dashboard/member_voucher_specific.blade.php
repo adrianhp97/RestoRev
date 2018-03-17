@@ -1,7 +1,7 @@
 @extends('dashboard.layout')
 
 @section('title')
-  <h1>Review of {{ $restaurant['name'] }}</h1>
+  <h1>Voucher Member of {{ $restaurant['name'] }}</h1>
 @endsection
 
 @section('content')
@@ -16,5 +16,5 @@
 @endsection
 
 @section('script')
-<script type="text/javascript" src="{{URL::asset('/js/tableReviewSpec.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('/js/tableMemberVoucher.js')}}"></script>
 @endsection

@@ -5,6 +5,15 @@
 @endsection
 
 @section('content')
+<div class="container">
+@foreach($listRestaurant as $restaurant)
+  <div>
+    <a href="{{URL::route('dashboard-voucher-spec', ['restaurant_id' => $restaurant['restaurant_id']])}}">
+      {{ $restaurant['name']}}
+    </a>
+  </div>
+@endforeach
+</div>
 @endsection
 
 @section('script')

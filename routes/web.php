@@ -11,6 +11,12 @@
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| Dashboard Route
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/admin', function () {
     return view('dashboard.dashboard');
 })->name('dashboard');
@@ -23,34 +29,27 @@ Route::get('/admin/restaurant/top', function () {
     return view('dashboard.top_restaurant');
 })->name('dashboard-top-restaurant');
 
-Route::get('/admin/restaurant/review', function () {
-    return view('dashboard.review');
-})->name('dashboard-review');
+Route::get('/admin/restaurant/review', 'ReviewDashboardController@index')->name('dashboard-review');
 
-Route::get('/admin/restaurant/review/{restaurant_id}', function () {
-    return view('dashboard.review_specific');
-});
+Route::get('/admin/restaurant/review/{restaurant_id}', 'ReviewDashboardController@getRestaurantById')->name('dashboard-review-spec');
 
-Route::get('/admin/restaurant/voucher', function () {
-    return view('dashboard.voucher');
-})->name('dashboard-voucher');
+Route::get('/admin/restaurant/voucher', 'VoucherDashboardController@index')->name('dashboard-voucher');
 
-Route::get('/admin/restaurant/voucher/{restaurant_id}', function () {
-    return view('dashboard.voucher_specific');
-});
+Route::get('/admin/restaurant/voucher/{restaurant_id}', 'VoucherDashboardController@getRestaurantById')->name('dashboard-voucher-spec');
 
 Route::get('/admin/member', function () {
     return view('dashboard.list_member');
 })->name('dashboard-member');
 
-Route::get('/admin/member/voucher/', function () {
-    return view('dashboard.member_voucher');
-})->name('dashboard-member-voucher');
+Route::get('/admin/member/voucher/', 'UserGetVoucherDashboardController@index')->name('dashboard-member-voucher');
 
-Route::get('/admin/member/voucher/{restaurant}', function () {
-    return view('dashboard.member_voucher');
-});
+Route::get('/admin/member/voucher/{restaurant}', 'UserGetVoucherDashboardController@getRestaurantById')->name('dashboard-member-voucher-spec');;
 
+/*
+|--------------------------------------------------------------------------
+| Client Route
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/', function () {
     return view('client.index');
@@ -74,3 +73,18 @@ Route::get('/promo', function () {
 
 
 
+/*
+|--------------------------------------------------------------------------
+| Tables Route
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/getListMember', 'UserDashboardController@getListMember');
+
+Route::get('/getListRestaurant', 'RestaurantDashboardController@getListRestaurant');
+
+Route::get('/getListVoucher/{restaurant_id}', 'VoucherDashboardController@getAllVoucherByRestaurant');
+
+Route::get('/getListReview/{restaurant_id}', 'ReviewDashboardController@getAllReviewByRestaurant');
+
+Route::get('/getListMemberVoucher/{restaurant_id}', 'UserGetVoucherDashboardController@getAllUserByRestaurant');

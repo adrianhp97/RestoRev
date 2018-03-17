@@ -16,7 +16,7 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Restaurant::Create($request->all());
     }
 
     /**
@@ -40,5 +40,15 @@ class RestaurantController extends Controller
     public function destroy(Restaurant $restaurant)
     {
         //
+    }
+
+    public static function getAllRestaurant() {
+        $restaurant = Restaurant::All();
+        return $restaurant->toArray();
+    }
+
+    public static function getRestaurantById($restaurant_id)
+    {
+        return Restaurant::All()->where('restaurant_id', $restaurant_id)->first()->toArray();
     }
 }

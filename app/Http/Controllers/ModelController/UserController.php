@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return User::Create($request->all());
     }
 
     /**
@@ -40,5 +40,10 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public static function getAllUser() {
+        $user = User::All();
+        return $user->toArray();
     }
 }

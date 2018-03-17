@@ -41,4 +41,13 @@ class ReviewController extends Controller
     {
         //
     }
+
+    public static function getAllReview() {
+        $review = Review::All();
+        return $review->toArray();
+    }
+
+    public static function getAllReviewByRestaurant($restaurant_id) {
+        return Review::All()->where('restaurant_id', $restaurant_id)->toJson();
+    }
 }

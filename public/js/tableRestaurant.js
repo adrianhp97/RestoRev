@@ -10,8 +10,8 @@ $(function () {
     });
     $('#table').bootstrapTable({
         idField: 'nik',
-        // url: '/getListRestaurant',
-        url: '../json/resto.json',
+        url: '/getListRestaurant',
+        // url: '../json/resto.json',
         queryParams: 'queryParams',
         pagination: 'true',
         pageList: '[5,10,15,20]',

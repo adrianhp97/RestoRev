@@ -1,11 +1,12 @@
 var $table = $('#table'),
     $deleteButton = $('#delete-button');
+var restaurant_id = $('#restaurant_id').val();
 
 $(function () {
     $('#table').bootstrapTable({
         idField: 'nik',
-        url: '/getListMember',
-        // url: '../json/member.json',
+        url: '/getListMemberVoucher/' + restaurant_id,
+        // url: '../json/reviewspec.json',
         queryParams: 'queryParams',
         pagination: 'true',
         pageList: '[5,10,15,20]',
@@ -23,17 +24,9 @@ $(function () {
             title: 'User ID',
             sortable: 'true'
         }, {
-            field: 'name',
-            title: 'Name',
-            sortable: 'true'
-        }, {
             field: 'email',
             title: 'Email',
             sortable: 'true'
-        }, {
-            field: 'phone_number',
-            title: 'Phone Number',
-            sortable: 'true',
         }]
     });
 });

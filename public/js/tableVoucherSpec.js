@@ -6,8 +6,8 @@ var restaurant_id = $('#restaurant_id').val();
 $(function () {
     $('#table').bootstrapTable({
         idField: 'nik',
-        // url: '/getListVoucher/' + restaurant_id,
-        url: '../json/voucherspec.json',
+        url: '/getListVoucher/' + restaurant_id,
+        // url: '../json/voucherspec.json',
         queryParams: 'queryParams',
         pagination: 'true',
         pageList: '[5,10,15,20]',

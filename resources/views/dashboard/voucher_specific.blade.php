@@ -1,12 +1,12 @@
 @extends('dashboard.layout')
 
 @section('title')
-  <h1>Voucher of {X}</h1>
+  <h1>Voucher of {{ $restaurant['name'] }}</h1>
 @endsection
 
 @section('content')
 <div class="container">
-  <input type="hidden" id="restaurant_id" name="restaurant_id" value="test">
+  <input type="hidden" id="restaurant_id" name="restaurant_id" value="{{ $restaurant['restaurant_id'] }}">
   <div id="toolbar">
     <button id="add-button" class="btn btn-default">Add</button>
     <button id="delete-button" class="btn btn-default">Delete</button>

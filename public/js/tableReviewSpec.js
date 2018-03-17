@@ -5,8 +5,8 @@ var restaurant_id = $('#restaurant_id').val();
 $(function () {
     $('#table').bootstrapTable({
         idField: 'nik',
-        // url: '/getListReview/' + restaurant_id,
-        url: '../json/reviewspec.json',
+        url: '/getListReview/' + restaurant_id,
+        // url: '../json/reviewspec.json',
         queryParams: 'queryParams',
         pagination: 'true',
         pageList: '[5,10,15,20]',
@@ -20,7 +20,7 @@ $(function () {
             field: 'state',
             checkbox: 'true'
         }, {
-            field: 'id',
+            field: 'review_id',
             title: 'Review ID',
             sortable: 'true'
         }, {
@@ -46,10 +46,10 @@ $(function () {
 $(function () {
     $deleteButton.click(function () {
         var ids = $.map($table.bootstrapTable('getSelections'), function (row) {
-            return row.id;
+            return row.review_id;
         });
         $table.bootstrapTable('remove', {
-            field: 'id',
+            field: 'review_id',
             values: ids
         });
     });
