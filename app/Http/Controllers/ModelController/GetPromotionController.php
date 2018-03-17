@@ -27,7 +27,7 @@ class GetPromotionController extends Controller
      * @param  \App\GetPromotion  $getPromotion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GetPromotion $getPromotion)
+    public function update(Request $request)
     {
         //
     }
@@ -38,9 +38,14 @@ class GetPromotionController extends Controller
      * @param  \App\GetPromotion  $getPromotion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GetPromotion $getPromotion)
+    public function destroy($user_id, $restaurant_id)
     {
-        //
+        $whereArray = array('user_id' => $user_id, 'restaurant_id' => $restaurant_id);
+        $query = DB::table('get_promotion');
+        foreach($whereArray as $field => $value) {
+            $query->where($field, $value);
+        }
+        return $query->delete();
     }
 
     public static function getAllUserByRestaurant($restaurant_id)

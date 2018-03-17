@@ -37,9 +37,9 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($user_id)
     {
-        //
+        DB::table('users')->where('user_id', '=', $user_id)->delete();
     }
 
     public static function getAllUser() {

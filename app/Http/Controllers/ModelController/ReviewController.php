@@ -37,9 +37,9 @@ class ReviewController extends Controller
      * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Review $review)
+    public function destroy($review_id)
     {
-        //
+        DB::table('review')->where('review_id', '=', $review_id)->delete();
     }
 
     public static function getAllReview() {

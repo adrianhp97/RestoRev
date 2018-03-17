@@ -37,9 +37,9 @@ class VoucherController extends Controller
      * @param  \App\Voucher  $voucher
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Voucher $voucher)
+    public function destroy($code)
     {
-        //
+        DB::table('voucher')->where('code', '=', $code)->delete();
     }
 
     public static function getAllVoucher() 

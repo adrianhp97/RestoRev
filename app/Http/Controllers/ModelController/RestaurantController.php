@@ -26,9 +26,14 @@ class RestaurantController extends Controller
      * @param  \App\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Restaurant $restaurant)
+    public function update(Request $request)
     {
-        //
+        $restaurant = Restaurant::findOrFail($request->get('pk'));
+        $name = $request->get('name');
+        $value = $request->get('value');
+        $restaurant->$name = $value;
+        $restaurant->save();
+        return $restaurant->toJson();
     }
 
     /**
@@ -37,9 +42,9 @@ class RestaurantController extends Controller
      * @param  \App\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Restaurant $restaurant)
+    public function destroy($restaurant_id)
     {
-        //
+        DB::table('restaurant')->where('restaurant_id', '=', $restaurant_id)->delete();
     }
 
     public static function getAllRestaurant() {
