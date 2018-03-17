@@ -63,8 +63,6 @@ Route::get('/partnership', 'PartnershipController@index')->name('client-partners
 
 Route::get('/promo', 'PromoController@index')->name('client-promo');
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Tables Route
@@ -80,3 +78,48 @@ Route::get('/getListVoucher/{restaurant_id}', 'VoucherDashboardController@getAll
 Route::get('/getListReview/{restaurant_id}', 'ReviewDashboardController@getAllReviewByRestaurant');
 
 Route::get('/getListMemberVoucher/{restaurant_id}', 'UserGetVoucherDashboardController@getAllUserByRestaurant');
+
+/*
+|--------------------------------------------------------------------------
+| Insert Data Route
+|--------------------------------------------------------------------------
+*/
+Route::post('/insertMember', 'MemberController@store');
+
+Route::post('/insertRestaurant', 'RestaurantDashboardController@store');
+
+Route::post('/insertVoucher/{restaurant_id}', 'VoucherDashboardController@store');
+
+Route::post('/insertReview/{restaurant_id}', 'ReviewController@store');
+
+Route::post('/insertMemberVoucher/{restaurant_id}', 'PromoController@store');
+
+/*
+|--------------------------------------------------------------------------
+| Delete Data Route
+|--------------------------------------------------------------------------
+*/
+Route::post('/deleteMember', 'UserDashboardController@destroy');
+
+Route::post('/deleteRestaurant', 'RestaurantDashboardController@destroy');
+
+Route::post('/deleteVoucher/{restaurant_id}', 'VoucherDashboardController@destroy');
+
+Route::post('/deleteReview/{restaurant_id}', 'ReviewDashboardController@destroy');
+
+Route::post('/deleteMemberVoucher/{restaurant_id}', 'UserGetVoucherDashboardController@destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Delete Data Route
+|--------------------------------------------------------------------------
+*/
+Route::post('/updateMember', 'UserDashboardController@update');
+
+Route::post('/updateRestaurant', 'RestaurantDashboardController@update');
+
+Route::post('/updateVoucher/{restaurant_id}', 'VoucherDashboardController@update');
+
+Route::post('/updateReview/{restaurant_id}', 'ReviewDashboardController@update');
+
+Route::post('/updateMemberVoucher/{restaurant_id}', 'UserGetVoucherDashboardController@update');
