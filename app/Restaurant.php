@@ -16,6 +16,7 @@ class Restaurant extends Model
         'city',
         'phone_number',
         'price_bottom',
-        'price_top'
+        'price_top',
+        'img_url'
     ];
 }

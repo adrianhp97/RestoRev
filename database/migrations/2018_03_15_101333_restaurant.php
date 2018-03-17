@@ -16,6 +16,7 @@ class Restaurant extends Migration
             $table->string('phone_number');
             $table->bigInteger('price_bottom');
             $table->bigInteger('price_top');
+            $table->string('img_url');
             $table->float('rating', 3, 2)->default(0);
             $table->integer('counter_rating')->default(0);
             $table->timestamps();

@@ -1,11 +1,12 @@
 @extends('dashboard.layout')
 
 @section('title')
-  <h1>List of Member</h1>
+  <h1>Review of {X}</h1>
 @endsection
 
 @section('content')
 <div class="container">
+  <input type="hidden" id="restaurant_id" name="restaurant_id" value="test">
   <div id="toolbar">
     <button id="delete-button" class="btn btn-default">Delete</button>
   </div>
@@ -15,5 +16,5 @@
 @endsection
 
 @section('script')
-<script type="text/javascript" src="{{URL::asset('/js/tableMember.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('/js/tableReviewSpec.js')}}"></script>
 @endsection

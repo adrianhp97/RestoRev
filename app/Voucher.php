@@ -14,6 +14,7 @@ class Voucher extends Model
         'restaurant_id',
         'description',
         'valid_from',
-        'valid_until'
+        'valid_until',
+        'img_url'
     ];
 }

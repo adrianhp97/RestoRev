@@ -27,7 +27,7 @@ Route::get('/admin/restaurant/review', function () {
     return view('dashboard.review');
 })->name('dashboard-review');
 
-Route::get('/admin/restaurant/review/{restaurant}', function () {
+Route::get('/admin/restaurant/review/{restaurant_id}', function () {
     return view('dashboard.review');
 });
 
@@ -35,7 +35,7 @@ Route::get('/admin/restaurant/voucher', function () {
     return view('dashboard.voucher');
 })->name('dashboard-voucher');
 
-Route::get('/admin/restaurant/voucher/{restaurant}', function () {
+Route::get('/admin/restaurant/voucher/{restaurant_id}', function () {
     return view('dashboard.voucher');
 });
 

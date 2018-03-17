@@ -15,6 +15,7 @@ class Voucher extends Migration
             $table->text('description');
             $table->dateTime('valid_from');
             $table->dateTime('valid_until');
+            $table->string('img_url');
             $table->timestamps();
             $table->primary('code');
         });
