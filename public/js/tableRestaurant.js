@@ -133,6 +133,31 @@ $(function () {
     });
 });
 
+$('#add-voucher').submit(function()  {
+    var data = {
+        restaurant_id: $('#restaurant_id').val(),
+        name: $('#name').val(),
+        address: $('#address').val(),
+        city: $('#city').val(),
+        phone_number: $('#phone_number').val(),
+        price_bottom: $('#price_bottom').val(),
+        price_top: $('#price_top').val(),
+        img_url: $('#img_url').val(),
+        rating: $('#rating').val(),
+        counter_rating: $('#counter_rating').val()
+    };
+    $.ajax({
+        url: '/insertRestaurant',
+        type: 'post',
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+        data: data,
+        success: function(data) {
+            // console.log(data);
+            // alert(data);
+        }
+    });
+});
+
 $(function () {
     $addButton.click(function () {
         $table.bootstrapTable('insertRow', {

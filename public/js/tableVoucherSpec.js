@@ -28,28 +28,28 @@ $(function () {
             field: 'name',
             title: 'Name',
             sortable: 'true',
-            editable: {
-                type: 'text',
-                mode: 'popup',
-                name: 'spj',
-                pk : '*[@id="table"]/tbody/tr/td[1]',
-                validate: function(value) {
-                    if($.trim(value) == '') return 'This field is required';
-                }
-            }
+            // editable: {
+            //     type: 'text',
+            //     mode: 'popup',
+            //     name: 'spj',
+            //     pk : '*[@id="table"]/tbody/tr/td[1]',
+            //     validate: function(value) {
+            //         if($.trim(value) == '') return 'This field is required';
+            //     }
+            // }
         }, {
             field: 'description',
             title: 'description',
             sortable: 'true',
-            editable: {
-                type: 'text',
-                mode: 'popup',
-                name: 'spj',
-                pk : '*[@id="table"]/tbody/tr/td[1]',
-                validate: function(value) {
-                    if($.trim(value) == '') return 'This field is required';
-                }
-            }
+            // editable: {
+            //     type: 'text',
+            //     mode: 'popup',
+            //     name: 'spj',
+            //     pk : '*[@id="table"]/tbody/tr/td[1]',
+            //     validate: function(value) {
+            //         if($.trim(value) == '') return 'This field is required';
+            //     }
+            // }
         }, {
             field: 'valid_from',
             title: 'Valid From',
@@ -98,6 +98,28 @@ $(function () {
                     
                 }
             });
+        }
+    });
+});
+
+$('#add-voucher').submit(function()  {
+    var data = {
+        restaurant_id: $('#restaurant_id').val(),
+        code: $('#code').val(),
+        name: $('#name').val(),
+        description: $('#description').val(),
+        valid_from: $('#valid_from').val(),
+        valid_until: $('#valid_until').val(),
+        img_url: $('#img_url').val()
+    };
+    $.ajax({
+        url: '/insertVoucher',
+        type: 'post',
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+        data: data,
+        success: function(data) {
+            // console.log(data);
+            // alert(data);
         }
     });
 });

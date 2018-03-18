@@ -22,4 +22,9 @@ class TopRestaurantController extends Controller
             return DB::table('top_restaurant')->where('restaurant_id', '=', $restaurant_id)->delete();
         }
     }
+
+    public static function getAllTopRestaurant() {
+        $restaurant = TopRestaurant::All();
+        return $restaurant->toArray();
+    }
 }

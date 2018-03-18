@@ -13,9 +13,9 @@ class Voucher extends Migration
             $table->string('name');
             $table->integer('restaurant_id')->unsigned();
             $table->text('description');
-            $table->dateTime('valid_from');
-            $table->dateTime('valid_until');
-            $table->string('img_url');
+            $table->string('valid_from');
+            $table->string('valid_until');
+            $table->string('img_url')->nullable();
             $table->timestamps();
             $table->primary('code');
         });

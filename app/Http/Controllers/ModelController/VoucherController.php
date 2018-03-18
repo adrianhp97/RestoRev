@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ModelController;
 
+use DB;
 use App\Voucher;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,7 +11,19 @@ class VoucherController extends Controller
 {
     public static function store(Request $request)
     {
-        return Voucher::Create($request->all());
+        $voucher = new Voucher($request->all());
+        return DB::select(DB::raw("INSERT INTO voucher
+            VALUE(
+                '$voucher->code',
+                '$voucher->name',
+                '$voucher->restaurant_id',
+                '$voucher->description',
+                '$voucher->valid_from',
+                '$voucher->valid_until',
+                '$voucher->img_url',
+                null,
+                null);
+            "));
     }
 
     public static function destroy($code)

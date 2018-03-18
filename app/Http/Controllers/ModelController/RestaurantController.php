@@ -11,7 +11,22 @@ class RestaurantController extends Controller
 {
     public static function store(Request $request)
     {
-        return Restaurant::Create($request->all());
+        $restaurant = new Restaurant($request->all());
+        return DB::select(DB::raw("INSERT INTO restaurant
+            VALUE(
+                '$restaurant->restaurant_id',
+                '$restaurant->name',
+                '$restaurant->address',
+                '$restaurant->city',
+                '$restaurant->phone_number',
+                $restaurant->price_bottom,
+                $restaurant->price_top,
+                '$restaurant->img_url',
+                $restaurant->rating,
+                $restaurant->counter_rating,
+                null,
+                null);
+            "));
     }
 
     public static function update(Request $request)
@@ -29,7 +44,6 @@ class RestaurantController extends Controller
             // do task when error
             return $e->getMessage();   // insert query
         }
-        
     }
 
     public static function destroy($restaurant_id)
