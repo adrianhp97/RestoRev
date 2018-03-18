@@ -48,9 +48,23 @@ $(function () {
         var ids = $.map($table.bootstrapTable('getSelections'), function (row) {
             return row.review_id;
         });
+        var data = $.map($table.bootstrapTable('getSelections'), function (row) {
+            return row;
+        });
         $table.bootstrapTable('remove', {
             field: 'review_id',
             values: ids
         });
+        for (idx = 0; idx < data.length; idx++) {
+            $.ajax({
+                url: '/deleteReview',
+                type: 'post',
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                data: data[idx],
+                success: function(data) {
+                    
+                }
+            });
+        }
     });
 });

@@ -20,7 +20,12 @@ class ReviewController extends Controller
 
     public static function destroyByRestaurant($restaurant_id)
     {
-        return DB::table('review')->where('restaurant_id', '=', $restaurant_id)->delete();
+        $review = Review::where('restaurant_id', '=', $restaurant_id)->first();
+        if ($review === null) {
+            return "No Record";
+        } else {
+            return DB::table('review')->where('restaurant_id', '=', $restaurant_id)->delete();
+        }
     }
 
     public static function getAllReview() {

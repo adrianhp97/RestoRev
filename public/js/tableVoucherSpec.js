@@ -81,10 +81,24 @@ $(function () {
         var ids = $.map($table.bootstrapTable('getSelections'), function (row) {
             return row.code;
         });
+        var data = $.map($table.bootstrapTable('getSelections'), function (row) {
+            return row;
+        });
         $table.bootstrapTable('remove', {
             field: 'code',
             values: ids
         });
+        for (idx = 0; idx < data.length; idx++) {
+            $.ajax({
+                url: '/deleteVoucher',
+                type: 'post',
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                data: data[idx],
+                success: function(data) {
+                    
+                }
+            });
+        }
     });
 });
 

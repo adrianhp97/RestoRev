@@ -15,12 +15,18 @@ class VoucherController extends Controller
 
     public static function destroy($code)
     {
-        DB::table('voucher')->where('code', '=', $code)->delete();
+        return DB::table('voucher')->where('code', '=', $code)->delete();
     }
 
     public static function destroyByRestaurant($restaurant_id)
     {
-        DB::table('voucher')->where('restaurant_id', '=', $restaurant_id)->delete();
+        $voucher = Voucher::where('restaurant_id', '=', $restaurant_id)->first();
+        if ($voucher === null) {
+            return "No Record";
+        } else {
+            return DB::table('voucher')->where('restaurant_id', '=', $restaurant_id)->delete();
+        }     
+        
     }
 
     public static function getAllVoucher() 

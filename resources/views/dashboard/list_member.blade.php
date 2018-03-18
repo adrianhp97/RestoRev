@@ -9,7 +9,6 @@
   <div id="toolbar">
     <button id="delete-button" class="btn btn-default">Delete</button>
   </div>
-
   <table id="table"></table>
 </div>
 @endsection

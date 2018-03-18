@@ -26,12 +26,22 @@ class GetPromotionController extends Controller
     
     public static function destroyByUser($user_id)
     {
-        return DB::table('get_promotion')->where('user_id', '=', $user_id)->delete();
+        $get_promotion = GetPromotion::where('user_id', '=', $user_id)->first();
+        if ($get_promotion === null) {
+            return "No Record";
+        } else {
+            return DB::table('get_promotion')->where('user_id', '=', $user_id)->delete();
+        }
     }
 
     public static function destroyByRestaurant($restaurant_id)
     {
-        return DB::table('get_promotion')->where('restaurant_id', '=', $restaurant_id)->delete();
+        $get_promotion = GetPromotion::where('restaurant_id', '=', $restaurant_id)->first();
+        if ($get_promotion === null) {
+            return "No Record";
+        } else {
+            return DB::table('get_promotion')->where('restaurant_id', '=', $restaurant_id)->delete();
+        }
     }
 
     public static function getAllUserByRestaurant($restaurant_id)

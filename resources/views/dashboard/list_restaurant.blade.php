@@ -11,6 +11,7 @@
     <button id="delete-button" class="btn btn-default">Delete</button>
   </div>
 
+  <a href="#" id="test" data-pk=2>test</a>
   <table id="table"></table>
 
   <form id="add-restaurant">

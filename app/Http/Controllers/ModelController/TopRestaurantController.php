@@ -15,6 +15,11 @@ class TopRestaurantController extends Controller
 
     public static function destroy($restaurant_id)
     {
-        return DB::table('top_restaurant')->where('restaurant_id', '=', $restaurant_id)->delete();
+        $top_restaurant = TopRestaurant::where('restaurant_id', '=', $restaurant_id)->first();
+        if ($top_restaurant === null) {
+            return "No Record";
+        } else {
+            return DB::table('top_restaurant')->where('restaurant_id', '=', $restaurant_id)->delete();
+        }
     }
 }
