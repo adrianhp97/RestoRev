@@ -29,5 +29,6 @@
 
   <ul class="list-unstyled CTAs">
     <li><a href="{{URL::route('client-index')}}" class="client-page">Go to Client Page</a></li>
+    <li><a href="{{URL::route('logout')}}" class="logout">Logout</a></li>
   </ul>
 </nav>
