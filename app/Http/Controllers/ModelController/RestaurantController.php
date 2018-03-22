@@ -60,4 +60,25 @@ class RestaurantController extends Controller
     {
         return Restaurant::All()->where('restaurant_id', $restaurant_id)->first()->toArray();
     }
+
+    public static function getLimitRestaurant()
+    {
+        return Restaurant::orderBy('restaurant_id','DESC')->limit(6)->get();
+    }
+
+    public static function getLimitRestaurantByCondition($restaurant_id)
+    {
+        try 
+        {
+            return DB::select(DB::raw("SELECT *
+                FROM restaurant
+                WHERE restaurant_id < $restaurant_id
+                ORDER BY restaurant_id DESC
+                LIMIT 6;
+            "));
+        } catch(\Exception $e){
+            // do task when error
+            return $e->getMessage();   // insert query
+        }
+    }
 }

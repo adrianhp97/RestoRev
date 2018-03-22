@@ -21,8 +21,6 @@ Route::get('/admin', 'LoginController@index')->name('login');
 
 Route::post('/loginProcess', 'LoginController@login')->name('loginProcess');
 
-Route::get('/logout', 'LoginController@logout')->name('logout');
-
 Route::group(['middleware' => 'checkuser'], function() {
     Route::get('/admin/dashboard', 'DashboardController@index')->name('dashboard');
 
@@ -43,6 +41,8 @@ Route::group(['middleware' => 'checkuser'], function() {
     Route::get('/admin/member/voucher/', 'UserGetVoucherDashboardController@index')->name('dashboard-member-voucher');
 
     Route::get('/admin/member/voucher/{restaurant}', 'UserGetVoucherDashboardController@getRestaurantById')->name('dashboard-member-voucher-spec');;
+
+    Route::get('/logout', 'LoginController@logout')->name('logout');
 });
 
 /*
@@ -56,6 +56,11 @@ Route::get('/', 'HomeController@index')->name('client-index');
 Route::get('/about', function () {
     return view('client.about');
 })->name('client-about');
+
+Route::get('/review/{restaurant_id}', function () {
+    return view('client.review_restaurant');
+})->name('client-review');
+
 
 Route::get('/member', 'MemberController@index')->name('client-member');
 
@@ -131,3 +136,11 @@ Route::post('/updateVoucher', 'VoucherDashboardController@update');
 Route::post('/updateReview', 'ReviewDashboardController@update');
 
 Route::post('/updateMemberVoucher', 'UserGetVoucherDashboardController@update');
+
+/*
+|--------------------------------------------------------------------------
+| others Data Route
+|--------------------------------------------------------------------------
+*/
+
+Route::post('home/loaddata','HomeController@loadDataAjax' );

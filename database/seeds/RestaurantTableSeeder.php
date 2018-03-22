@@ -17,6 +17,7 @@ class RestaurantTableSeeder extends Seeder
                 'address' => str_random(20),
                 'city' => str_random(7),
                 'phone_number' => str_random(12),
+                'desc' => str_random(500),
                 'price_bottom' => rand(100000, 2000000),
                 'price_top' => rand(100000, 2000000),
                 'img_url' => str_random(12).'.png',

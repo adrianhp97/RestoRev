@@ -14,6 +14,7 @@ class Restaurant extends Migration
             $table->string('address');
             $table->string('city');
             $table->string('phone_number');
+            $table->text('desc');
             $table->bigInteger('price_bottom');
             $table->bigInteger('price_top');
             $table->string('img_url')->nullable();

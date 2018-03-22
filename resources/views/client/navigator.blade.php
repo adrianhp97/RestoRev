@@ -1,40 +1,35 @@
-<header>
-  <div class="row">
-    <div class="col-md-12">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <h1 class="logo"><a href="{{URL::route('client-index')}}">eclair</a></h1>
-        <button class="navbar-toggler menuButton" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+<!--================Search Area =================-->
+<section class="search_area">
+<div class="search_inner">
+    <input type="text" placeholder="Search for Restaurant">
+    <i class="ti-close"></i>
+</div>
+</section>
+<!--================End Search Area =================-->
 
-        <div class="collapse navbar-collapse menuList" id="navbarSupportedContent">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="menuOpt nav-link" style="color: #FFFFFF" href="{{URL::route('client-index')}}">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="menuOpt nav-link" style="color: #FFFFFF" href="{{URL::route('client-member')}}">Members</a>
-            </li>
-            <li class="nav-item">
-              <a class="menuOpt nav-link" style="color: #FFFFFF" href="{{URL::route('client-promo')}}">Promo</a>
-            </li>
-            <li class="nav-item">
-              <a class="menuOpt nav-link" style="color: #FFFFFF" href="{{URL::route('client-partnership')}}">Partnership</a>
-            </li>
-              <li class="nav-item">
-              <a class="menuOpt nav-link" style="color: #FFFFFF" href="{{URL::route('client-about')}}">About</a>
-            </li>
-          </ul>
-        </div>
-        <div class="searchDropdown">
-        <img id="search" src="{{URL::asset('img/search.png')}}" />
-        <div id="searchBar">
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          </form>
-        </div>
-      </div>
-      </nav>
+<!--================Header Menu Area =================-->
+<header class="main_menu_area">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{{URL::route('client-index')}}"><img src="" alt="Eclair"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a class="nav-link" href="{{URL::route('client-index')}}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{URL::route('client-member')}}">Member</a></li>
+            <li class="nav-item"><a  href="{{URL::route('client-promo')}}">Promo</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{URL::route('client-partnership')}}">Partnership</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{URL::route('client-about')}}">About</a></li>
+        </ul>
+        <ul class="navbar-nav justify-content-end">
+            <li><a href="#"><i class="icon_search"></i></a></li>
+            <li><a href="#"><i class="icon_bag_alt"></i></a></li>
+        </ul>
     </div>
-  </div>
+</nav>
 </header>
+<!--================End Header Menu Area =================-->

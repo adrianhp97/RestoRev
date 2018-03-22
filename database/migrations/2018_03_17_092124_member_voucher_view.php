@@ -25,6 +25,6 @@ class MemberVoucherView extends Migration
      */
     public function down()
     {
-        DB::statement("DROP VIEW IF EXIST member_voucher");
+        DB::statement("DROP VIEW member_voucher");
     }
 }
