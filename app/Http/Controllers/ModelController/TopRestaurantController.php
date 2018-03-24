@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ModelController;
 
+use DB;
 use App\TopRestaurant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,7 +11,13 @@ class TopRestaurantController extends Controller
 {
     public static function store(Request $request)
     {
-        return TopRestaurant::create($request);
+        try
+        {
+            return TopRestaurant::Create($request->all());
+        } catch(\Exception $e){
+            // do task when error
+            return $e->getMessage();   // insert query
+        }
     }
 
     public static function destroy($restaurant_id)
@@ -24,7 +31,17 @@ class TopRestaurantController extends Controller
     }
 
     public static function getAllTopRestaurant() {
-        $restaurant = TopRestaurant::All();
-        return $restaurant->toArray();
+        // $restaurant = TopRestaurant::All();
+        try
+        {
+            // $restaurant = 
+            return DB::select(DB::raw("SELECT *
+                FROM top_restaurant NATURAL JOIN restaurant;
+            "));
+            return $restaurant->toArray();
+        } catch(\Exception $e){
+            // do task when error
+            return $e->getMessage();   // insert query
+        }
     }
 }

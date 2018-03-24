@@ -5,9 +5,10 @@
 <section class="banner_area">
   <div class="container">
     <div class="banner_text_inner">
-      <h4>Partnership</h4>
+      <h4>Search Result</h4>
       <ul>
-        <li><a href="{{ URL::route('client-partnership') }}"><i class="fa fa-credit-card-blank" aria-hidden="true"></i>Partnership</a></li>
+        <li><a href="{{ URL::route('client-index') }}"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+        <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Search</a></li>                    
       </ul>
     </div>
   </div>
@@ -18,11 +19,16 @@
 <section class="latest_news_area p_100">
     <div class="container">
         <div class="b_center_title">
-            <h2>Partnership</h2>
-            <p>Our partner that can be view</p>
+            <h2>Restaurant Review</h2>
+            <p>Search result for review restaurant</p>
         </div>
         <div class="l_news_inner">
-            <div class="row" id="load-data">
+            <div class="row">
+            @if ($listRestaurant->count() <= 0)
+              <div style="margin: auto">
+                Retaurant Not Found.
+              </div>
+            @endif
             @foreach($listRestaurant as $restaurant)
                 <div class="col-lg-4 col-md-6">
                     <div class="l_news_item">
@@ -36,12 +42,9 @@
                     </div>
                 </div>
             @endforeach
-                <div class="col-sm-12">&nbsp</div>
-                <div id="remove-row" style="margin:auto">
-                    <button id="btn-more" onclick="getLoadData()" data-id="{{ $restaurant->restaurant_id }}"> Load More </button>
-                </div>
             </div>
         </div>
+        
     </div>
 </section>
 <!--================End Latest News Area =================-->

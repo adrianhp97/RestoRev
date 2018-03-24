@@ -53,14 +53,11 @@ Route::group(['middleware' => 'checkuser'], function() {
 
 Route::get('/', 'HomeController@index')->name('client-index');
 
-Route::get('/about', function () {
-    return view('client.about');
-})->name('client-about');
+Route::get('/about', 'AboutController@index')->name('client-about');
 
-Route::get('/review/{restaurant_id}', function () {
-    return view('client.review_restaurant');
-})->name('client-review');
+Route::get('/review/{restaurant_id}', 'ReviewClientController@index')->name('client-review');
 
+Route::get('/search/{keyword}', 'SearchController@index')->name('client-search');
 
 Route::get('/member', 'MemberController@index')->name('client-member');
 
@@ -78,7 +75,7 @@ Route::get('/getListMember', 'UserDashboardController@getListMember');
 
 Route::get('/getListRestaurant', 'RestaurantDashboardController@getListRestaurant');
 
-Route::get('/getListTopRestaurant', 'TopRestaurantDashboardController@getListTopRestaurant');
+Route::get('/getListTopRestaurant', 'TopRestaurantDashboardController@getAllTopRestaurant');
 
 Route::get('/getListVoucher/{restaurant_id}', 'VoucherDashboardController@getAllVoucherByRestaurant');
 
@@ -99,7 +96,7 @@ Route::post('/insertTopRestaurant', 'TopRestaurantDashboardController@store');
 
 Route::post('/insertVoucher', 'VoucherDashboardController@store');
 
-Route::post('/insertReview', 'ReviewController@store');
+Route::post('/insertReview', 'ReviewClientController@store');
 
 Route::post('/insertMemberVoucher', 'PromoController@store');
 
@@ -143,4 +140,18 @@ Route::post('/updateMemberVoucher', 'UserGetVoucherDashboardController@update');
 |--------------------------------------------------------------------------
 */
 
-Route::post('home/loaddata','HomeController@loadDataAjax' );
+Route::get('home/loaddata','HomeController@loadDataAjax' );
+
+Route::post('/updateAbout', 'DashboardController@updateAbout')->name('update-about');
+
+Route::post('/updateTitle', 'DashboardController@updateHomeTitle')->name('update-title');
+
+Route::post('/updateContact', 'DashboardController@updateContact')->name('update-contact');
+
+Route::post('/updateMemberInformation', 'DashboardController@updateMemberInformation')->name('update-info');
+
+Route::get('/sendemail', 'EmailController@getCode');
+
+Route::get('/checkIfExist/{email}','PromoController@checkAttribute');
+
+Route::get('/checkIfGetPromo/{email}/{code}','PromoController@checkIsGetPromo');

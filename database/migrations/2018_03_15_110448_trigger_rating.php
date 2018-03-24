@@ -20,8 +20,8 @@ class TriggerRating extends Migration
             BEGIN
                 SET @new_rating = NEW.rating;
                 SET @restaurant_id = NEW.restaurant_id;
-                SET @rating_restaurant = (SELECT rating FROM restaurant);
-                SET @counter_rating = (SELECT counter_rating FROM restaurant);
+                SET @rating_restaurant = (SELECT rating FROM restaurant WHERE restaurant.restaurant_id = @restaurant_id);
+                SET @counter_rating = (SELECT counter_rating FROM restaurant WHERE restaurant.restaurant_id = @restaurant_id);
                 SET @rating_total = ((@rating_restaurant * @counter_rating) + @new_rating) / (@counter_rating + 1);
 
                 UPDATE restaurant
@@ -38,8 +38,8 @@ class TriggerRating extends Migration
             BEGIN
                 SET @old_rating = OLD.rating;
                 SET @restaurant_id = OLD.restaurant_id;
-                SET @rating_restaurant = (SELECT rating FROM restaurant);
-                SET @counter_rating = (SELECT counter_rating FROM restaurant);
+                SET @rating_restaurant = (SELECT rating FROM restaurant WHERE restaurant.restaurant_id = @restaurant_id);
+                SET @counter_rating = (SELECT counter_rating FROM restaurant WHERE restaurant.restaurant_id = @restaurant_id);
                 SET @rating_total = ((@rating_restaurant * @counter_rating) - @old_rating) / (@counter_rating - 1);
 
                 UPDATE restaurant

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\ModelController;
 
+use DB;
 use App\Review;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -10,6 +12,9 @@ class ReviewController extends Controller
 {
     public static function store(Request $request)
     {
+        // return $request;
+        $current = Carbon::now();
+        $review = new Review($request->all());
         return Review::Create($request->all());
     }
 
@@ -34,6 +39,6 @@ class ReviewController extends Controller
     }
 
     public static function getAllReviewByRestaurant($restaurant_id) {
-        return Review::All()->where('restaurant_id', $restaurant_id)->toJson();
+        return Review::where('restaurant_id','=', $restaurant_id)->get();
     }
 }

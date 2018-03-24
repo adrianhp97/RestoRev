@@ -1,16 +1,15 @@
 var $table = $('#table'),
     $deleteButton = $('#delete-button');
-    $addButton = $('#add-button');
 
 $(function () {
-    $.fn.editable.defaults.url = '/updateRestaurant';
+    $.fn.editable.defaults.url = '/updateTopRestaurant';
     
     $.ajaxSetup({
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
     });
     $('#table').bootstrapTable({
         idField: 'nik',
-        url: '/getListRestaurant',
+        url: '/getListTopRestaurant',
         // url: '../json/resto.json',
         queryParams: 'queryParams',
         pagination: 'true',
@@ -89,20 +88,6 @@ $(function () {
             //         if($.trim(value) == '') return 'This field is required';
             //     }
             // }
-        }, {
-            field: 'img_url',
-            title: 'Image File',
-            sortable: 'true',
-            formatter: function formatter(value, row, index) {
-                return [
-                    '<div class="pull-left">',
-                    '<span>' + value + '</span>',
-                    '</div>',
-                    '<div class="custom-file">',
-                    '<input type="file" class="custom-file-input" id="customFile">',
-                    '</div>'
-                ].join('');
-            }
         }]
     });
 });
@@ -121,7 +106,7 @@ $(function () {
         });
         for (idx = 0; idx < data.length; idx++) {
             $.ajax({
-                url: '/deleteRestaurant',
+                url: '/deleteTopRestaurant',
                 type: 'post',
                 headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
                 data: data[idx],
@@ -133,21 +118,12 @@ $(function () {
     });
 });
 
-$('#add-restaurant').submit(function()  {
+$('#add-top').submit(function()  {
     var data = {
         restaurant_id: $('#restaurant_id').val(),
-        name: $('#name').val(),
-        address: $('#address').val(),
-        city: $('#city').val(),
-        phone_number: $('#phone_number').val(),
-        price_bottom: $('#price_bottom').val(),
-        price_top: $('#price_top').val(),
-        img_url: $('#img_url').val(),
-        rating: $('#rating').val(),
-        counter_rating: $('#counter_rating').val()
     };
     $.ajax({
-        url: '/insertRestaurant',
+        url: '/insertTopRestaurant',
         type: 'post',
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
         data: data,
@@ -155,24 +131,6 @@ $('#add-restaurant').submit(function()  {
             // console.log(data);
             // alert(data);
         }
-    });
-});
-
-$(function () {
-    $addButton.click(function () {
-        $table.bootstrapTable('insertRow', {
-            index: 1,
-            row: {
-                restaurant_id: 1,
-                name: 'Item ',
-                address: '$',
-                city: 'd',
-                phone_number: 'd',
-                price_bottom: 'd',
-                price_top: 'd',
-                img_url: 'd',
-            }
-        });
     });
 });
 

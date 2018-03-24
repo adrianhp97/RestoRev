@@ -51,4 +51,19 @@ class GetPromotionController extends Controller
             WHERE member_voucher.restaurant_id = $restaurant_id
             "));
     }
+
+    public static function checkAttribute($email, $code)
+    {
+        $promo = DB::select(DB::raw("SELECT code, user_id, email
+                FROM member_voucher 
+                WHERE member_voucher.email = '$email' AND
+                    member_voucher.code = '$code';
+            "));
+        if (count($promo) > 0) {
+            return "true";
+        }
+        else {
+            return "false";
+        }
+    }
 }

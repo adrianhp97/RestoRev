@@ -22,4 +22,20 @@ class UserController extends Controller
         $user = User::All();
         return $user->toArray();
     }
+
+    public static function checkAttribute($email)
+    {
+        $user = User::where('email', '=', $email)->get();
+        if ($user->count() > 0) {
+            return "true";
+        }
+        else {
+            return "false";
+        }
+    }
+
+    public static function getUserByEmail($email)
+    {
+        return $user = User::where('email', '=', $email)->first();
+    }
 }

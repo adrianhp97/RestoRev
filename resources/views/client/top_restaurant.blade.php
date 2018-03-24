@@ -7,36 +7,18 @@
         </div>
         <div class="l_news_inner">
             <div class="row">
+            @foreach($topRestaurant as $restaurant)
                 <div class="col-lg-4 col-md-6">
                     <div class="l_news_item">
-                        <div class="l_news_img"><a href="#"><img class="img-fluid" src="img/blog/l-news/l-news-1.jpg" alt=""></a></div>
+                        <div class="l_news_img"><a href="{{ URL::route('client-review', (string)$restaurant->restaurant_id) }}"><img class="img-fluid" src="img/blog/l-news/l-news-1.jpg" alt=""></a></div>
                         <div class="l_news_content">
-                            <a href="#"><h4>We Create Experiences</h4></a>
-                            <p>The Fancy that recognize the talent and effort of the best web designers, develop-ers and agencies in the world.</p>
-                            <a class="more_btn" href="#">Learn More</a>
+                            <a href="{{ URL::route('client-review', (string)$restaurant->restaurant_id) }}"><h4>{{ $restaurant->name }}</h4></a>
+                            <p style="word-break: break-all">{{  substr(strip_tags($restaurant->desc,'<pre>,<code>'),0,100) }}{{ strlen(strip_tags($restaurant->desc)) > 100 ? "..." : "" }}.</p>
+                            <a class="more_btn" href="{{ URL::route('client-review', (string)$restaurant->restaurant_id) }}">Go to Review</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="l_news_item">
-                        <div class="l_news_img"><a href="#"><img class="img-fluid" src="img/blog/l-news/l-news-2.jpg" alt=""></a></div>
-                        <div class="l_news_content">
-                            <a href="#"><h4>Simple, Fast And Fun</h4></a>
-                            <p>The Fancy that recognize the talent and effort of the best web designers, develop-ers and agencies in the world.</p>
-                            <a class="more_btn" href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="l_news_item">
-                        <div class="l_news_img"><a href="#"><img class="img-fluid" src="img/blog/l-news/l-news-3.jpg" alt=""></a></div>
-                        <div class="l_news_content">
-                            <a href="#"><h4>Device Friendly</h4></a>
-                            <p>The Fancy that recognize the talent and effort of the best web designers, develop-ers and agencies in the world.</p>
-                            <a class="more_btn" href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
+            @endforeach
             </div>
         </div>
     </div>

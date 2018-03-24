@@ -8,9 +8,10 @@ class GetPromotion extends Model
 {
     protected $table = "get_promotion";
     public $incrementing = false;
+    public $timestamps = true;
 
     protected $fillable = [
         'user_id',
-        'restaurant_id'
+        'code'
     ];
 }

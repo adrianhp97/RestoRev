@@ -52,4 +52,16 @@ class VoucherController extends Controller
     {
         return Voucher::All()->where('restaurant_id', $restaurant_id)->toJson();
     }
+
+    public static function getVoucherByCode($code) 
+    {
+        $voucher = DB::select(DB::raw("SELECT voucher.code, voucher.name AS voucher_name, restaurant.name AS retaurant_name 
+            FROM voucher JOIN restaurant ON voucher.restaurant_id = restaurant.restaurant_id
+            WHERE voucher.code = '$code' LIMIT 1;
+        "));
+        $voucher = array_map(function ($value) {
+            return (array)$value;
+        }, $voucher);
+        return $voucher[0];
+    }
 }

@@ -1,7 +1,7 @@
 <!--================Search Area =================-->
 <section class="search_area">
 <div class="search_inner">
-    <input type="text" placeholder="Search for Restaurant">
+    <input type="text" id="search" name="search" placeholder="Search for Restaurant">
     <i class="ti-close"></i>
 </div>
 </section>

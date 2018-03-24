@@ -19,17 +19,22 @@
     <div class="container">
         <div class="b_center_title">
             <h2>Promo</h2>
-            <p>We Are A Creative Digital Agency. Focused on Growing Brands Online</p>
+            <p>Special promotion you can get</p>
         </div>
         <div class="l_news_inner">
+            <div id="email-div" class="form-group col-lg-12">
+                <input type="text" class="form-control" id="email" name="email" placeholder="email">
+                <label id="emailLabel" for="email"></label>
+            </div>
+            <div>&nbsp</div>
             <div class="row">
             @foreach($listVoucher as $voucher)
                 <div class="col-lg-4 col-md-6">
                     <div class="l_news_item">
                         <div class="l_news_img"><a href="#"><img class="img-fluid" src="img/blog/l-news/l-news-1.jpg" alt=""></a></div>
                         <div class="l_news_content">
-                            <a href="#"><h4>{{ $voucher['name'] }}</h4></a>
-                            <a class="more_btn" href="#">Get Promo</a>
+                            <a  href=""><h4 style="text-align: center">{{ $voucher['name'] }}</h4></a>
+                            <button id="{{ $voucher['code'] }}" style="margin: auto" type="submit" value="submit" class="btn submit_btn2 form-control">Get Code</button>
                         </div>
                     </div>
                 </div>
@@ -42,4 +47,5 @@
 @endsection
 
 @section('script')
+<script src="{{ URL::asset('js/voucher.js') }}"></script>
 @endsection

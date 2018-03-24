@@ -2,7 +2,7 @@
 <section class="banner_area">
 <div class="container">
     <div class="banner_text_inner">
-        <h4>Eclair Resto Review</h4>
+        <h4>{{ $title->title }}</h4>
         <div class="tp-caption tp-resizeme slider_button"
             data-x="['center','center','center','center','center','center']"
             data-hoffset="['0','0','0','0']"

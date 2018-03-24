@@ -22,30 +22,11 @@
             <div class="contact_text">
                 <div class="main_title">
                     <h2>Member</h2>
-                    <p>There are many ways to contact us. You may drop us a line, give us a call or send an email, choose what suits you the most</p>
-                </div>
-                <div class="contact_d_list">
-                    <div class="contact_d_list_item">
-                        <a href="#">(800) 686-6688</a>
-                        <a href="#">info.deercreative@gmail.com</a>
+                    <div class="row">
+                        <div class="col-md-11">
+                            <p style="word-wrap: break-word;">{{ $info->information }}</p>
+                        </div>
                     </div>
-                    <div class="contact_d_list_item">
-                        <p>40 Baria Sreet 133/2 <br /> NewYork City, US</p>
-                    </div>
-                    <div class="contact_d_list_item">
-                        <p>Open hours: 8.00-18.00 Mon-Fri <br />Sunday: Closed</p>
-                    </div>
-                </div>
-                <div class="static_social">
-                    <div class="main_title">
-                        <h2>Follow Us:</h2>
-                    </div>
-                    <ul>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -55,7 +36,7 @@
                     <h2>Registration</h2>
                     <p>Fill out the form below to recieve a free and confidential.</p>
                 </div>
-                <form class="contact_us_form row" action="/insertMember" method="post" id="contactForm" novalidate="novalidate">
+                <form class="contact_us_form row" id="memberForm" novalidate="novalidate">
                     <div class="form-group col-lg-12">
                         <input type="text" class="form-control" id="name" name="name" placeholder="Name">
                     </div>
@@ -81,4 +62,5 @@
 @endsection
 
 @section('script')
+<script src="{{ URL::asset('js/insertMember.js') }}"></script>
 @endsection

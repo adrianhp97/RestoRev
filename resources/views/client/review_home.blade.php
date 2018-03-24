@@ -6,7 +6,7 @@
             <p>We Are A Creative Digital Agency. Focused on Growing Brands Online</p>
         </div>
         <div class="l_news_inner">
-            <div class="row">
+            <div class="row" id="load-data">
             @foreach($listRestaurant as $restaurant)
                 <div class="col-lg-4 col-md-6">
                     <div class="l_news_item">
@@ -20,9 +20,10 @@
                     </div>
                 </div>
             @endforeach
-            <div id="remove-row">
-                <button id="btn-more" data-id="{{ $restaurant->restaurant_id }}"> Load More </button>
-            </div>
+                <div class="col-sm-12">&nbsp</div>
+                <div id="remove-row" style="margin:auto">
+                    <button id="btn-more" onclick="getLoadData()" data-id="{{ $restaurant->restaurant_id }}"> Load More </button>
+                </div>
             </div>
         </div>
         

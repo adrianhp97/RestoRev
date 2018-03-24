@@ -66,6 +66,17 @@ class RestaurantController extends Controller
         return Restaurant::orderBy('restaurant_id','DESC')->limit(6)->get();
     }
 
+    public static function getSearchRestaurant($keywoard)
+    {
+        $searchValues = preg_split('/\s+/', $keywoard, -1, PREG_SPLIT_NO_EMPTY); 
+
+        return Restaurant::where(function ($q) use ($searchValues) {
+            foreach ($searchValues as $value) {
+                $q->orWhere('name', 'like', "%{$value}%");
+            }
+        })->get();
+    }
+
     public static function getLimitRestaurantByCondition($restaurant_id)
     {
         try 
