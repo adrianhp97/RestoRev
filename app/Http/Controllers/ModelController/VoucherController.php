@@ -4,25 +4,36 @@ namespace App\Http\Controllers\ModelController;
 
 use DB;
 use App\Voucher;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 
 class VoucherController extends Controller
 {
     public static function store(Request $request)
     {
+        // return $request;
         $voucher = new Voucher($request->all());
+        if ($request->file('img_url')->isValid()) {
+            $request->file('img_url');
+            // return Storage::putFile('public/voucher_img', $request->file('img_url'));
+            $path = $request->file('img_url')->storeAs(
+                'public/voucher_img', $voucher->code
+            );
+        }
+        $current = Carbon::now();
         return DB::select(DB::raw("INSERT INTO voucher
             VALUE(
                 '$voucher->code',
                 '$voucher->name',
-                '$voucher->restaurant_id',
+                $voucher->restaurant_id,
                 '$voucher->description',
                 '$voucher->valid_from',
                 '$voucher->valid_until',
-                '$voucher->img_url',
-                null,
-                null);
+                '$voucher->code',
+                '$current',
+                '$current');
             "));
     }
 

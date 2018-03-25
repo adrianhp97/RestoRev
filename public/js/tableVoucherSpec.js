@@ -103,23 +103,22 @@ $(function () {
 });
 
 $('#add-voucher').submit(function()  {
-    var data = {
-        restaurant_id: $('#restaurant_id').val(),
-        code: $('#code').val(),
-        name: $('#name').val(),
-        description: $('#description').val(),
-        valid_from: $('#valid_from').val(),
-        valid_until: $('#valid_until').val(),
-        img_url: $('#img_url').val()
-    };
+    var formData = new FormData($(this)[0]);
     $.ajax({
         url: '/insertVoucher',
         type: 'post',
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-        data: data,
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
         success: function(data) {
-            // console.log(data);
-            // alert(data);
+            console.log(data);
+            alert(data);
+        },
+        error: function (ajaxContext) {
+            console.log(ajaxContext.responseText);
+            alert(ajaxContext.responseText);
         }
     });
 });

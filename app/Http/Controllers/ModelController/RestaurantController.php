@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\ModelController;
 
+use Carbon\Carbon;
 use App\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use DB;
 
@@ -12,21 +14,15 @@ class RestaurantController extends Controller
     public static function store(Request $request)
     {
         $restaurant = new Restaurant($request->all());
-        return DB::select(DB::raw("INSERT INTO restaurant
-            VALUE(
-                '$restaurant->restaurant_id',
-                '$restaurant->name',
-                '$restaurant->address',
-                '$restaurant->city',
-                '$restaurant->phone_number',
-                $restaurant->price_bottom,
-                $restaurant->price_top,
-                '$restaurant->img_url',
-                $restaurant->rating,
-                $restaurant->counter_rating,
-                null,
-                null);
-            "));
+        if ($request->file('img_url')->isValid()) {
+            $request->file('img_url');
+            // return Storage::putFile('public/voucher_img', $request->file('img_url'));
+            $path = $request->file('img_url')->storeAs(
+                'public/restaurant_img/', $restaurant->name
+            );
+        }
+        $current = Carbon::now();
+        return Restaurant::Create($request->all());
     }
 
     public static function update(Request $request)
@@ -87,6 +83,45 @@ class RestaurantController extends Controller
                 ORDER BY restaurant_id DESC
                 LIMIT 6;
             "));
+        } catch(\Exception $e){
+            // do task when error
+            return $e->getMessage();   // insert query
+        }
+    }
+
+    public static function getLimitByOrder($order)
+    {
+        if($order === 'asc')
+        {
+            return Restaurant::orderBy('price_bottom','ASC')->limit(6)->get();
+        }
+        else
+        {
+            return Restaurant::orderBy('price_top','DESC')->limit(6)->get();
+        }
+    }
+
+    public static function getLimitRestaurantByOrder($restaurant_id, $order, $counter)
+    {
+        try 
+        {
+            $lower = $counter * 6;
+            if($order === 'asc')
+            {
+                return DB::select(DB::raw("SELECT *
+                    FROM restaurant
+                    ORDER BY price_bottom ASC
+                    LIMIT $lower, 6;
+                "));
+            }
+            else
+            {
+                return DB::select(DB::raw("SELECT *
+                    FROM restaurant
+                    ORDER BY price_top DESC
+                    LIMIT $lower, 6;
+                "));
+            }
         } catch(\Exception $e){
             // do task when error
             return $e->getMessage();   // insert query

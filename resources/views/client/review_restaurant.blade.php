@@ -23,9 +23,10 @@
             <div class="col-lg-9">
                 <div class="static_main_content">
                     <div class="static_img">
-                        <img class="img-fluid" src="img/static-1.jpg" alt="">
+                        <img class="img-fluid" src="{{ URL::asset('storage/restaurant_img/' . $restaurant['name']) }}" alt="">
                     </div>
                     <div class="static_text">
+                        <p style="word-break: break-all">Price: Rp {{ number_format($restaurant['price_bottom'], 2) }} - Rp {{ number_format($restaurant['price_top'], 2) }}</p>
                         <p style="word-wrap: break-word;">{{ $restaurant['desc'] }}</p>
                     </div>
                 </div>
@@ -110,8 +111,6 @@
             </div>
         </div>
     </div>
-
-    @include('client.review_user')
 </div>
 </section>
 <!--================End Static Area =================-->

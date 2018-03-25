@@ -10,7 +10,7 @@
             @foreach($topRestaurant as $restaurant)
                 <div class="col-lg-4 col-md-6">
                     <div class="l_news_item">
-                        <div class="l_news_img"><a href="{{ URL::route('client-review', (string)$restaurant->restaurant_id) }}"><img class="img-fluid" src="img/blog/l-news/l-news-1.jpg" alt=""></a></div>
+                        <div class="l_news_img"><a href="{{ URL::route('client-review', (string)$restaurant->restaurant_id) }}"><img class="img-fluid" src="{{ URL::asset('storage/restaurant_img/' . $restaurant['name']) }}" alt=""></a></div>
                         <div class="l_news_content">
                             <a href="{{ URL::route('client-review', (string)$restaurant->restaurant_id) }}"><h4>{{ $restaurant->name }}</h4></a>
                             <p style="word-break: break-all">{{  substr(strip_tags($restaurant->desc,'<pre>,<code>'),0,100) }}{{ strlen(strip_tags($restaurant->desc)) > 100 ? "..." : "" }}.</p>

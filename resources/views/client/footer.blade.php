@@ -11,13 +11,6 @@
                             <h3>Link Categories</h3>
                         </div>
                         <ul>
-                            <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Agency</a></li>
-                            <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Studio</a></li>
-                            <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Studio</a></li>
-                            <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Blogs</a></li>
-                            <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Shop</a></li>
-                        </ul>
-                        <ul>
                             <li><a href="{{ URL::route('client-index') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Home</a></li>
                             <li><a href="{{ URL::route('client-member') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Member</a></li>
                             <li><a href="{{ URL::route('client-promo') }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Promo</a></li>
@@ -39,29 +32,13 @@
             </div>
         </div>
     </div>
-    <!-- <div class="copy_right_area">
+    <div class="copy_right_area">
         <div class="container">
             <div class="float-md-left">
                 <h5>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></h5>
             </div>
-            <div class="float-md-right">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Disclaimer</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Privacy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Advertisement</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact us</a>
-                    </li>
-                </ul>
-            </div>
         </div>
-    </div> -->
+    </div>
 </footer>
 <!--================End Footer Area =================-->
 

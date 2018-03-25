@@ -37,6 +37,19 @@ $(function () {
             title: 'Location',
             sortable: 'true'
         }, {
+            field: 'desc',
+            title: 'Description',
+            sortable: 'true',
+            // editable: {
+            //     type: 'text',
+            //     mode: 'popup',
+            //     name: 'price_bottom',
+            //     pk : '*[@id="table"]/tbody/tr/td[1]',
+            //     validate: function(value) {
+            //         if($.trim(value) == '') return 'This field is required';
+            //     }
+            // }
+        }, {
             field: 'city',
             title: 'City',
             sortable: 'true',
@@ -134,26 +147,24 @@ $(function () {
 });
 
 $('#add-restaurant').submit(function()  {
-    var data = {
-        restaurant_id: $('#restaurant_id').val(),
-        name: $('#name').val(),
-        address: $('#address').val(),
-        city: $('#city').val(),
-        phone_number: $('#phone_number').val(),
-        price_bottom: $('#price_bottom').val(),
-        price_top: $('#price_top').val(),
-        img_url: $('#img_url').val(),
-        rating: $('#rating').val(),
-        counter_rating: $('#counter_rating').val()
-    };
+    var formData = new FormData($(this)[0]);
+    console.log(formData);
+    alert(formData);
     $.ajax({
         url: '/insertRestaurant',
         type: 'post',
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-        data: data,
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
         success: function(data) {
-            // console.log(data);
-            // alert(data);
+            console.log(data);
+            alert(data);
+        },
+        error: function (ajaxContext) {
+            console.log(ajaxContext.responseText);
+            alert(ajaxContext.responseText);
         }
     });
 });

@@ -26,6 +26,11 @@
       <small id="addressHelp" class="form-text text-muted">Where is the restaurant?</small>
     </div>
     <div class="form-group">
+      <label for="desc">Description</label>
+      <textarea class="form-control" id="desc" name="desc" aria-describedby="descHelp" placeholder="Description" rows="6"></textarea>
+      <small id="descHelp" class="form-text text-muted">This is description of the restaurant</small>
+    </div>
+    <div class="form-group">
       <label for="city">City</label>
       <input type="text" class="form-control" id="city" name="city" aria-describedby="cityHelp" placeholder="City">
       <small id="cityHelp" class="form-text text-muted">Where is the restaurant?</small>

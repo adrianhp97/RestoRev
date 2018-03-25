@@ -26,7 +26,7 @@
             @foreach($listRestaurant as $restaurant)
                 <div class="col-lg-4 col-md-6">
                     <div class="l_news_item">
-                        <div class="l_news_img"><a href="#"><img class="img-fluid" src="img/blog/l-news/l-news-1.jpg" alt=""></a></div>
+                        <div class="l_news_img"><a href="#"><img class="img-fluid" src="{{ URL::asset('storage/restaurant_img/' . $restaurant['name']) }}" alt=""></a></div>
                         <div class="l_news_content">
                             <i class="fa fa-birthday-cake" aria-hidden="true"></i> {{ $restaurant['rating'] }}
                             <a href="{{ URL::route('client-review', $restaurant['restaurant_id']) }}"><h4>{{ $restaurant['name'] }}</h4></a>

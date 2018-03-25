@@ -2,44 +2,25 @@
 <html>
 <head>
   @include('dashboard.head')
+  <link rel="stylesheet" href="{{URL::asset('css/login.css')}}">
 </head>
 <body>
-  <div class="container-fluid">
+<div class="login-page">
+  <div class="form">
+    <h1 style="text-align:center"><b>Admin Login</b></h1>
     {!! Form::open(['url' => '/loginProcess', 'method' => 'post', 'class' => 'form-horizontal']) !!}
     {!! Form::token() !!}
-    <div class="row">
-      <div class="col-sm-2 center-block">
-        {!! Form::label('username', 'Username', ['class' => 'pull-right control-label']) !!}
-      </div>
-      <div class="col-sm-6 center-block">
-        {!! Form::text('username', '', ['class' => 'form-control pull-right']) !!}
-      </div>
-      <div class="col-sm-4 center-block">
-      </div>
-    </div>
-    <div class="row">
-      &nbsp;
-    </div>
-    <div class="row">
-      <div class="col-sm-2 center-block">
-        {!! Form::label('password', 'Password', ['class' => 'pull-right control-label']) !!}
-      </div>
-      <div class="col-sm-6 center-block">
-        {!! Form::password('password', ['class' => 'form-control pull-right']) !!}
-      </div>
-      <div class="col-sm-4 center-block">
-      </div>
-    </div>
-    <div class="row">
-      &nbsp;
-    </div>
-    <div class="row">
-      <div class="col-sm-6 center-block">
-        {!! Form::submit('Login', ['class' => 'btn btn-info pull-right']) !!}
-      </div>
-    </div>
+    {!! Form::text('username', '', ['class' => 'form-control pull-right', 'placeholder'=>'Username']) !!}
+    {!! Form::password('password', ['class' => 'form-control pull-right', 'placeholder'=>'Password']) !!}
+    {!! Form::submit('Login', ['class' => 'btn btn-info pull-right']) !!}
+    <div>&nbsp</div>
     {{ Form::close() }}
   </div>
+</div>
+<script>
+  $('.message a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+  });
+</script>
 </body>
 </html>
-

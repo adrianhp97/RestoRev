@@ -31,7 +31,7 @@
             @foreach($listVoucher as $voucher)
                 <div class="col-lg-4 col-md-6">
                     <div class="l_news_item">
-                        <div class="l_news_img"><a href="#"><img class="img-fluid" src="img/blog/l-news/l-news-1.jpg" alt=""></a></div>
+                        <div class="l_news_img"><a href="#"><img class="img-fluid" src="{{ URL::asset('storage/voucher_img/' . $voucher['code']) }}" alt=""></a></div>
                         <div class="l_news_content">
                             <a  href=""><h4 style="text-align: center">{{ $voucher['name'] }}</h4></a>
                             <button id="{{ $voucher['code'] }}" style="margin: auto" type="submit" value="submit" class="btn submit_btn2 form-control">Get Code</button>

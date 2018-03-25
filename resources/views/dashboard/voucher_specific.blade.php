@@ -6,7 +6,6 @@
 
 @section('content')
 <div class="container">
-  <input type="hidden" id="restaurant_id" name="restaurant_id" value="{{ $restaurant['restaurant_id'] }}">
   <div id="toolbar">
     <button id="add-button" class="btn btn-default">Add</button>
     <button id="delete-button" class="btn btn-default">Delete</button>
@@ -16,6 +15,9 @@
 
   <form id="add-voucher">
     {{ csrf_field() }}
+    <div class="form-group">
+      <input type="hidden" id="restaurant_id" name="restaurant_id" value="{{ $restaurant['restaurant_id'] }}">
+    </div>
     <div class="form-group">
       <label for="code">Voucher Code</label>
       <input type="text" class="form-control" id="code" name="code" aria-describedby="codeHelp" placeholder="Code">
