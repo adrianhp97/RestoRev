@@ -43,7 +43,7 @@
                     </div>
                 @endforeach
             @endif
-            @if ($listRestaurant->count() <= 5 && $listRestaurant->count() > 0)
+            @if ($listRestaurant->count() >= 6 )
                 <div class="col-sm-12">&nbsp</div>
                 <div id="remove-row" style="margin:auto">
                     <button id="btn-more" onclick="getLoadData()" data-id="{{ $restaurant->restaurant_id }}"> Load More </button>
