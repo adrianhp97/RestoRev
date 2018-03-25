@@ -51,6 +51,10 @@ Route::group(['middleware' => 'checkuser'], function() {
 |--------------------------------------------------------------------------
 */
 
+Route::get('/', function () {
+    return redirect('home');
+});
+
 Route::get('/home/{order?}', 'HomeController@index')->name('client-index');
 
 Route::get('/about', 'AboutController@index')->name('client-about');
@@ -140,7 +144,7 @@ Route::post('/updateMemberVoucher', 'UserGetVoucherDashboardController@update');
 |--------------------------------------------------------------------------
 */
 
-Route::get('home/ajax/loaddata','HomeController@loadDataAjax' );
+Route::get('/home/ajax/loaddata','HomeController@loadDataAjax' );
 
 Route::post('/updateAbout', 'DashboardController@updateAbout')->name('update-about');
 
