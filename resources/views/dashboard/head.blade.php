@@ -36,3 +36,8 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/extensions/editable/bootstrap-table-editable.min.js"></script>
 
+<style>
+  * {
+    word-break: break-all;
+  }
+</style>

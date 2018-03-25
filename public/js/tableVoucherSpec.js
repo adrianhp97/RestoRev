@@ -1,6 +1,5 @@
 var $table = $('#table'),
     $deleteButton = $('#delete-button');
-    $addButton = $('#add-button');
 var restaurant_id = $('#restaurant_id').val();
 
 $(function () {
@@ -28,28 +27,10 @@ $(function () {
             field: 'name',
             title: 'Name',
             sortable: 'true',
-            // editable: {
-            //     type: 'text',
-            //     mode: 'popup',
-            //     name: 'spj',
-            //     pk : '*[@id="table"]/tbody/tr/td[1]',
-            //     validate: function(value) {
-            //         if($.trim(value) == '') return 'This field is required';
-            //     }
-            // }
         }, {
             field: 'description',
             title: 'description',
             sortable: 'true',
-            // editable: {
-            //     type: 'text',
-            //     mode: 'popup',
-            //     name: 'spj',
-            //     pk : '*[@id="table"]/tbody/tr/td[1]',
-            //     validate: function(value) {
-            //         if($.trim(value) == '') return 'This field is required';
-            //     }
-            // }
         }, {
             field: 'valid_from',
             title: 'Valid From',
@@ -104,6 +85,7 @@ $(function () {
 
 $('#add-voucher').submit(function()  {
     var formData = new FormData($(this)[0]);
+    alert('upload voucher');
     $.ajax({
         url: '/insertVoucher',
         type: 'post',
@@ -113,29 +95,13 @@ $('#add-voucher').submit(function()  {
         contentType: false,
         processData: false,
         success: function(data) {
-            console.log(data);
-            alert(data);
+            // console.log(data);
+            // alert(data);
         },
         error: function (ajaxContext) {
-            console.log(ajaxContext.responseText);
-            alert(ajaxContext.responseText);
+            // console.log(ajaxContext.responseText);
+            // alert(ajaxContext.responseText);
         }
-    });
-});
-
-$(function () {
-    $addButton.click(function () {
-        $table.bootstrapTable('insertRow', {
-            index: 1,
-            row: {
-                code: 1,
-                name: 'Item ',
-                description: '$',
-                valid_from: 'd',
-                valid_until: 'd',
-                img_url: 'd',
-            }
-        });
     });
 });
 

@@ -18,7 +18,7 @@ class RestaurantController extends Controller
             $request->file('img_url');
             // return Storage::putFile('public/voucher_img', $request->file('img_url'));
             $path = $request->file('img_url')->storeAs(
-                'public/restaurant_img/', $restaurant->name
+                'public/restaurant_img', $restaurant->name
             );
         }
         $current = Carbon::now();
@@ -44,7 +44,13 @@ class RestaurantController extends Controller
 
     public static function destroy($restaurant_id)
     {
-        return DB::table('restaurant')->where('restaurant_id', '=', $restaurant_id)->delete();
+        $restaurant = Restaurant::where('restaurant_id', '=', $restaurant_id)->first();
+        if ($restaurant === null) {
+            return "No Record";
+        } else {
+            return DB::table('restaurant')->where('restaurant_id', '=', $restaurant_id)->delete();
+        }
+        // return DB::table('restaurant')->where('restaurant_id', '=', $restaurant_id)->delete();
     }
 
     public static function getAllRestaurant() {

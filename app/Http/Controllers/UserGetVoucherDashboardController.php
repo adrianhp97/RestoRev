@@ -3,32 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\ModelController\RestaurantController;
+use App\Http\Controllers\ModelController\VoucherController;
 use App\Http\Controllers\ModelController\GetPromotionController;
 
 class UserGetVoucherDashboardController extends Controller
 {
     public function index()
     {
-        $listRestaurant = RestaurantController::getAllRestaurant();
+        $listVoucher = VoucherController::getAllVoucher();
         return view('dashboard.member_voucher')
-            ->with('listRestaurant', $listRestaurant);
+            ->with('listVoucher', $listVoucher);
     }
 
-    public function getAllUserByRestaurant($restaurant_id)
+    public function getAllUserByVoucher($code)
     {
-        return GetPromotionController::getAllUserByRestaurant($restaurant_id);
+        return GetPromotionController::getAllUserByVoucher($$code);
     }
 
-    public function getRestaurantById($restaurant_id)
+    public function getVoucherById($code)
     {
-        $restaurant = RestaurantController::getRestaurantById($restaurant_id);
+        $voucher = VoucherController::getVoucherByCode($code);
         return view('dashboard.member_voucher_specific')
-            ->with('restaurant', $restaurant);
+            ->with('voucher', $voucher);
     }
 
-    public function destroy(Request $request, $restaurant_id)
+    public function destroy(Request $request, $code)
     {
-        return GetPromotionController::destroy($user_id, $restaurant_id);
+        return GetPromotionController::destroy($user_id, $code);
     }
 }

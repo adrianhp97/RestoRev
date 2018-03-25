@@ -14,9 +14,9 @@ class GetPromotionController extends Controller
         return GetPromotion::create($request);
     }
 
-    public function destroy($user_id, $restaurant_id)
+    public function destroy($user_id, $code)
     {
-        $whereArray = array('user_id' => $user_id, 'restaurant_id' => $restaurant_id);
+        $whereArray = array('user_id' => $user_id, 'code' => $code);
         $query = DB::table('get_promotion');
         foreach($whereArray as $field => $value) {
             $query->where($field, $value);
@@ -34,21 +34,21 @@ class GetPromotionController extends Controller
         }
     }
 
-    public static function destroyByRestaurant($restaurant_id)
+    public static function destroyByCode($code)
     {
-        $get_promotion = GetPromotion::where('restaurant_id', '=', $restaurant_id)->first();
+        $get_promotion = GetPromotion::where('code', '=', $code)->first();
         if ($get_promotion === null) {
             return "No Record";
         } else {
-            return DB::table('get_promotion')->where('restaurant_id', '=', $restaurant_id)->delete();
+            return DB::table('get_promotion')->where('code', '=', $code)->delete();
         }
     }
 
-    public static function getAllUserByRestaurant($restaurant_id)
+    public static function getAllUserByVoucher($code)
     {
-        return DB::select(DB::raw("SELECT restaurant_id, user_id, email
+        return DB::select(DB::raw("SELECT code, user_id, email
             FROM member_voucher 
-            WHERE member_voucher.restaurant_id = $restaurant_id
+            WHERE member_voucher.code = $code
             "));
     }
 

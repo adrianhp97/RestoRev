@@ -63,6 +63,10 @@ $(function () {
                 data: data[idx],
                 success: function(data) {
                     
+                }, 
+                error: function (ajaxContext) {
+                    console.log(ajaxContext.responseText);
+                    alert(ajaxContext.responseText);
                 }
             });
         }

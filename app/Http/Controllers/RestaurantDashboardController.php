@@ -28,7 +28,6 @@ class RestaurantDashboardController extends Controller
 
     public function destroy(Request $request) {
         TopRestaurantController::destroy($request->input('restaurant_id'));
-        GetPromotionController::destroyByRestaurant($request->input('restaurant_id'));
         VoucherController::destroyByRestaurant($request->input('restaurant_id'));
         ReviewController::destroyByRestaurant($request->input('restaurant_id'));
         return RestaurantController::destroy($request->input('restaurant_id'));

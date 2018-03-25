@@ -15,6 +15,7 @@ class UserController extends Controller
 
     public static function destroy($user_id)
     {
+        DB::table('get_promotion')->where('user_id', '=', $user_id)->delete();
         return DB::table('users')->where('user_id', '=', $user_id)->delete();
     }
 

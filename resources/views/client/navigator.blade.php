@@ -24,10 +24,7 @@
             <li id="in-promo" class="nav-item"><a  href="{{URL::route('client-promo')}}">Promo</a></li>
             <li id="in-partnership" class="nav-item"><a class="nav-link" href="{{URL::route('client-partnership')}}">Partnership</a></li>
             <li id="in-about" class="nav-item"><a class="nav-link" href="{{URL::route('client-about')}}">About</a></li>
-        </ul>
-        <ul class="navbar-nav justify-content-end">
             <li><a href="#"><i class="icon_search"></i></a></li>
-            <li><a href=""><i class="icon_bag_alt"></i></a></li>
         </ul>
     </div>
 </nav>

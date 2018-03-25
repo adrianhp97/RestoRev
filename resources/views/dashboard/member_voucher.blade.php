@@ -5,10 +5,10 @@
 @endsection
 
 @section('content')
-@foreach($listRestaurant as $restaurant)
+@foreach($listVoucher as $voucher)
   <div>
-    <a href="{{URL::route('dashboard-member-voucher-spec', ['restaurant_id' => $restaurant['restaurant_id']])}}">
-      {{ $restaurant['name']}}
+    <a href="{{URL::route('dashboard-member-voucher-spec', ['code' => $voucher['code']])}}">
+      {{ $voucher['name']}}
     </a>
   </div>
 @endforeach

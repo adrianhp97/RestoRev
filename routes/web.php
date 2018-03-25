@@ -40,7 +40,7 @@ Route::group(['middleware' => 'checkuser'], function() {
 
     Route::get('/admin/member/voucher/', 'UserGetVoucherDashboardController@index')->name('dashboard-member-voucher');
 
-    Route::get('/admin/member/voucher/{restaurant}', 'UserGetVoucherDashboardController@getRestaurantById')->name('dashboard-member-voucher-spec');;
+    Route::get('/admin/member/voucher/{code}', 'UserGetVoucherDashboardController@getVoucherById')->name('dashboard-member-voucher-spec');;
 
     Route::get('/logout', 'LoginController@logout')->name('logout');
 });

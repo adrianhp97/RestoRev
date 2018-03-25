@@ -39,16 +39,7 @@ $(function () {
         }, {
             field: 'desc',
             title: 'Description',
-            sortable: 'true',
-            // editable: {
-            //     type: 'text',
-            //     mode: 'popup',
-            //     name: 'price_bottom',
-            //     pk : '*[@id="table"]/tbody/tr/td[1]',
-            //     validate: function(value) {
-            //         if($.trim(value) == '') return 'This field is required';
-            //     }
-            // }
+            sortable: 'true'
         }, {
             field: 'city',
             title: 'City',
@@ -56,52 +47,16 @@ $(function () {
         }, {
             field: 'phone_number',
             title: 'Phone Number',
-            sortable: 'true',
-            // editable: {
-            //     type: 'text',
-            //     mode: 'popup',
-            //     name: 'phone_numner',
-            //     pk: function(row){
-            //         return row.restaurant_id;
-            //     },
-            //     params: function(params){
-            //         params.pk = $(this).attr('data-pk');
-            //         return params;
-            //     },
-            //     validate: function(value) {
-            //         if($.trim(value) == '') return 'This field is required';
-            //     },
-            //     success: function(data) {
-            //         console.log(data);
-            //         alert(data);
-            //     }
-            // }
+            sortable: 'true'
         }, {
             field: 'price_bottom',
             title: 'Lower Bound Price',
-            sortable: 'true',
-            // editable: {
-            //     type: 'text',
-            //     mode: 'popup',
-            //     name: 'price_bottom',
-            //     pk : '*[@id="table"]/tbody/tr/td[1]',
-            //     validate: function(value) {
-            //         if($.trim(value) == '') return 'This field is required';
-            //     }
+            sortable: 'true'
             // }
         }, {
             field: 'price_top',
             title: 'Upper Bound Price',
-            sortable: 'true',
-            // editable: {
-            //     type: 'text',
-            //     mode: 'popup',
-            //     name: 'price_top',
-            //     pk : '*[@id="table"]/tbody/tr/td[1]',
-            //     validate: function(value) {
-            //         if($.trim(value) == '') return 'This field is required';
-            //     }
-            // }
+            sortable: 'true'
         }, {
             field: 'img_url',
             title: 'Image File',
@@ -140,6 +95,10 @@ $(function () {
                 data: data[idx],
                 success: function(data) {
                     
+                },
+                error: function (ajaxContext) {
+                    console.log(ajaxContext.responseText);
+                    alert(ajaxContext.responseText);
                 }
             });
         }
@@ -148,8 +107,7 @@ $(function () {
 
 $('#add-restaurant').submit(function()  {
     var formData = new FormData($(this)[0]);
-    console.log(formData);
-    alert(formData);
+    alert('add restaurant');
     $.ajax({
         url: '/insertRestaurant',
         type: 'post',
@@ -159,46 +117,12 @@ $('#add-restaurant').submit(function()  {
         contentType: false,
         processData: false,
         success: function(data) {
-            console.log(data);
-            alert(data);
+            // console.log(data);
+            // alert(data);
         },
         error: function (ajaxContext) {
             console.log(ajaxContext.responseText);
             alert(ajaxContext.responseText);
         }
     });
-});
-
-$(function () {
-    $addButton.click(function () {
-        $table.bootstrapTable('insertRow', {
-            index: 1,
-            row: {
-                restaurant_id: 1,
-                name: 'Item ',
-                address: '$',
-                city: 'd',
-                phone_number: 'd',
-                price_bottom: 'd',
-                price_top: 'd',
-                img_url: 'd',
-            }
-        });
-    });
-});
-
-$(function() {
-    $('#test').editable({
-        type: 'text',
-        mode: 'inline',
-        pk: 1,
-        validate: function(value) {
-            if($.trim(value) == '') return 'This field is required';
-        },
-        success: function(data) {
-            $(this).data('pk', 23);
-            console.log($(this).data('pk'));
-        }
-      }
-    );
 });

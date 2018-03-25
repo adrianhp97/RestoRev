@@ -14,7 +14,7 @@ class Review extends Migration
             $table->string('name');
             $table->string('email');
             $table->text('review');
-            $table->integer('rating');
+            $table->integer('rating')->default(0);
             $table->timestamps();
         });
         Schema::table('review', function($table) {

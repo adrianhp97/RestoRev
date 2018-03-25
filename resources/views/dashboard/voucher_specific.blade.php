@@ -7,7 +7,6 @@
 @section('content')
 <div class="container">
   <div id="toolbar">
-    <button id="add-button" class="btn btn-default">Add</button>
     <button id="delete-button" class="btn btn-default">Delete</button>
   </div>
 
