@@ -19,11 +19,11 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active"><a class="nav-link" href="{{URL::route('client-index')}}">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{URL::route('client-member')}}">Member</a></li>
-            <li class="nav-item"><a  href="{{URL::route('client-promo')}}">Promo</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{URL::route('client-partnership')}}">Partnership</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{URL::route('client-about')}}">About</a></li>
+            <li id="in-home" class="nav-item"><a class="nav-link" href="{{URL::route('client-index')}}">Home</a></li>
+            <li id="in-member" class="nav-item"><a class="nav-link" href="{{URL::route('client-member')}}">Member</a></li>
+            <li id="in-promo" class="nav-item"><a  href="{{URL::route('client-promo')}}">Promo</a></li>
+            <li id="in-partnership" class="nav-item"><a class="nav-link" href="{{URL::route('client-partnership')}}">Partnership</a></li>
+            <li id="in-about" class="nav-item"><a class="nav-link" href="{{URL::route('client-about')}}">About</a></li>
         </ul>
         <ul class="navbar-nav justify-content-end">
             <li><a href="#"><i class="icon_search"></i></a></li>

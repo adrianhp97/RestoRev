@@ -67,3 +67,5 @@
 <script src="{{URL::asset('js/theme.js')}}"></script>
 
 <script src="{{URL::asset('js/search.js')}}"></script>
+
+<script src="{{URL::asset('js/changeTab.js')}}"></script>
